@@ -1,6 +1,38 @@
+-------->AI Grant Assistant<----------------
+
+AI-powered application that recommends grant programs and generates draft grant proposals using Gemini AI.
+
+--->> Features
+- Grant recommendations
+- AI-generated grant drafts
+- Download draft as Markdown
+- Next.js frontend and API routes
+
+---->> Setup
+
+1. Clone repository
+
+git clone https://github.com/nithinsana-6/grant-assistant.git
+
+2. Install dependencies
+
+npm install
+
+3. Create .env.local
+
+GEMINI_API_KEY=your_api_key_here
+
+4. Run application
+
+npm run dev
+
+5. Open
+
+http://localhost:3000
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Getting Started
 
 First, run the development server:
 
