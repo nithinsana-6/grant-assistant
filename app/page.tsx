@@ -35,6 +35,7 @@ const fitStyles: Record<string, string> = {
   'High Fit': 'bg-emerald-50 text-emerald-700 ring-emerald-200',
   'Strong Match': 'bg-blue-50 text-blue-700 ring-blue-200',
   'Innovation Fit': 'bg-violet-50 text-violet-700 ring-violet-200',
+  'Needs Review': 'bg-amber-50 text-amber-700 ring-amber-200',
 };
 
 export default function Home() {
@@ -74,6 +75,15 @@ export default function Home() {
         reason:
           'Recommended because the funding goal involves AI, innovation, or technology modernization.',
         fit: 'Innovation Fit',
+      });
+    }
+
+    if (grants.length === 0) {
+      grants.push({
+        name: 'General Transit Funding Review',
+        reason:
+          'Additional agency details are needed to identify a stronger grant match. Consider adding a clearer funding goal, location, or project concept.',
+        fit: 'Needs Review',
       });
     }
 
@@ -142,7 +152,7 @@ export default function Home() {
       detail: 'Copy and markdown download',
     },
     {
-      label: 'Workflow health',
+      label: 'System status',
       value: error ? 'Action needed' : 'Operational',
       detail: 'Loading and error handling',
     },
@@ -177,12 +187,12 @@ export default function Home() {
               </p>
 
               <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
-                Premium workflow for grant discovery and proposal drafting.
+                AI Grant Assistant for funding discovery and proposal drafting.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                A focused enterprise interface for grant matching, agency intake,
-                structured proposal drafting, and export-ready funding narratives.
+                A practical AI workflow for grant matching, agency intake, structured
+                proposal drafting, and export-ready funding narratives.
               </p>
             </div>
 
