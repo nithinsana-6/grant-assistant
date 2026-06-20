@@ -6,6 +6,8 @@ type Grant = {
   name: string;
   reason: string;
   fit: string;
+  confidence: number;
+  factors: string[];
 };
 
 const workflowSteps = [
@@ -58,6 +60,8 @@ export default function Home() {
         name: 'Section 5311 Rural Formula Program',
         reason: 'Recommended because the agency serves a rural community.',
         fit: 'High Fit',
+        confidence: 92,
+        factors: ['Rural service area', 'Transit agency profile', 'Formula funding alignment'],
       });
     }
 
@@ -66,6 +70,8 @@ export default function Home() {
         name: 'WA Consolidated Grant',
         reason: 'Recommended because the agency is located in Washington.',
         fit: 'Strong Match',
+        confidence: 88,
+        factors: ['Washington-based agency', 'State funding eligibility', 'Public transit focus'],
       });
     }
 
@@ -75,6 +81,8 @@ export default function Home() {
         reason:
           'Recommended because the funding goal involves AI, innovation, or technology modernization.',
         fit: 'Innovation Fit',
+        confidence: 94,
+        factors: ['AI modernization goal', 'Innovation-oriented project', 'Technology deployment'],
       });
     }
 
@@ -84,6 +92,8 @@ export default function Home() {
         reason:
           'Additional agency details are needed to identify a stronger grant match. Consider adding a clearer funding goal, location, or project concept.',
         fit: 'Needs Review',
+        confidence: 51,
+        factors: ['Insufficient eligibility signals', 'Needs clearer project scope', 'Manual review suggested'],
       });
     }
 
@@ -406,22 +416,52 @@ export default function Home() {
                                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
                                   Recommendation {index + 1}
                                 </p>
+
                                 <h4 className="mt-2 text-lg font-bold text-slate-950">
                                   {grant.name}
                                 </h4>
+
                                 <p className="mt-2 text-sm leading-6 text-slate-600">
                                   {grant.reason}
                                 </p>
+
+                                <div className="mt-4">
+                                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
+                                    Eligibility signals
+                                  </p>
+
+                                  <div className="mt-2 flex flex-wrap gap-2">
+                                    {grant.factors.map((factor) => (
+                                      <span
+                                        key={factor}
+                                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700"
+                                      >
+                                        {factor}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
 
-                              <span
-                                className={`inline-flex w-fit shrink-0 rounded-full px-3 py-1 text-xs font-bold ring-1 ${
-                                  fitStyles[grant.fit] ??
-                                  'bg-slate-50 text-slate-700 ring-slate-200'
-                                }`}
-                              >
-                                {grant.fit}
-                              </span>
+                              <div className="flex shrink-0 flex-col items-end gap-2">
+                                <span
+                                  className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-bold ring-1 ${
+                                    fitStyles[grant.fit] ??
+                                    'bg-slate-50 text-slate-700 ring-slate-200'
+                                  }`}
+                                >
+                                  {grant.fit}
+                                </span>
+
+                                <div className="text-right">
+                                  <p className="text-2xl font-bold text-slate-950">
+                                    {grant.confidence}%
+                                  </p>
+                                  <p className="text-xs font-semibold text-slate-500">
+                                    match confidence
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           </article>
                         ))}
